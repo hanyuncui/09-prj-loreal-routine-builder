@@ -40,22 +40,43 @@ body {
 .search-section {
   margin: 30px 0;
   display: flex;
+  gap: 12px;
+  align-items: center; /* 保持垂直居中对齐 */
 }
 
+/* 让下拉框固定为较短宽度（比之前窄一点） */
 .search-section select {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
+  flex: 0 0 200px; /* 固定宽度为 200px，可按需微调 */
+  padding: 14px;
+  font-size: 16px;
   border: 2px solid #000;
   border-radius: 8px;
   cursor: pointer;
   background-color: white;
   font-weight: 500;
+  width: auto; /* 移除 width:100% 的影响 */
+}
+
+/* 搜索输入扩展为更长（优先占用剩余空间） */
+.search-input {
+  flex: 2 1 0; /* 更大比率，让输入框更长 */
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: white;
+  font-weight: 500;
+  min-width: 120px;
 }
 
 .search-section select:focus {
   outline: none;
   border-color: #666;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--loreal-red);
 }
 
 /* chat section */
@@ -252,4 +273,137 @@ body {
 
 .generate-btn i {
   margin-right: 8px;
+}
+
+/* brand accents (L'Oréal): primary and secondary */
+:root {
+  --loreal-red: #ff003b;
+  --loreal-gold: #e3a535;
+}
+
+/* product card selected highlight */
+.product-card.selected {
+  border: 2px solid var(--loreal-red);
+  box-shadow: 0 4px 12px rgba(255, 0, 59, 0.08);
+}
+
+/* product description toggle */
+.product-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px dashed #eee;
+}
+
+/* Details button */
+.product-info .toggle-desc {
+  margin-top: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* selected products list items */
+.selected-item {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* remove button */
+.selected-item .remove-item {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 16px;
+}
+
+/* Clear All button in Selected Products header */
+.clear-btn {
+  margin-left: 12px;
+  padding: 6px 10px;
+  background: var(--loreal-gold);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* chat message styles for clarity */
+.chat-message.user {
+  text-align: right;
+  padding: 8px;
+  background: #fff;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+}
+.chat-message.assistant {
+  text-align: left;
+  padding: 8px;
+  background: #f6f6f6;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+}
+
+.show-more-btn {
+  display: block;
+  margin: 16px auto; /* 让按钮水平居中 */
+  background: none; /* 无背景 */
+  border: none; /* 无边框 */
+  color: #ff003b; /* L’Oréal 红 */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.show-more-btn:hover {
+  color: #e00035; /* hover 时更深一点的红 */
+  text-decoration: underline; /* 鼠标悬停时加下划线 */
+}
+
+.show-more-btn:focus {
+  outline: none; /* 去掉点击时的系统外框 */
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+/* 产品网格：右到左 */
+html[dir="rtl"] #productsContainer {
+  direction: rtl;
+}
+
+/* 已选产品列表：右对齐 */
+html[dir="rtl"] #selectedProductsList {
+  direction: rtl;
+  text-align: right;
+}
+
+/* 聊天内容：从右开始 */
+html[dir="rtl"] .chat-message {
+  direction: rtl;
+  text-align: right;
+}
+
+/* 用户消息仍反向显示 */
+html[dir="rtl"] .chat-message.user {
+  text-align: left;
 }

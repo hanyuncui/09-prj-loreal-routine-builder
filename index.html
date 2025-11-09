@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +26,13 @@
 
       <!-- Category Filter -->
       <div class="search-section">
+        <input
+          id="productSearch"
+          class="search-input"
+          type="search"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
         <select id="categoryFilter">
           <option value="" disabled selected>Choose a Category</option>
           <option value="cleanser">Cleansers</option>
@@ -44,7 +52,16 @@
 
       <!-- Selected Products -->
       <div class="selected-products">
-        <h2>Selected Products</h2>
+        <h2>
+          Selected Products
+          <button
+            id="clearSelections"
+            class="clear-btn"
+            title="Clear all selected products"
+          >
+            Clear All
+          </button>
+        </h2>
         <div id="selectedProductsList"></div>
         <button id="generateRoutine" class="generate-btn">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
